@@ -21,7 +21,9 @@ function App() {
 
   return (
     <>
-      <h1 className="text-red-500">Coctail Menu</h1>
+      <section>
+        <h1 className="text-red-500 text-4xl font-bold">Coctail Menu</h1>
+      </section>
     </>
   );
 }
