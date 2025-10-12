@@ -1,7 +1,6 @@
 import { useState, useEffect, act } from "react";
-import "./App.css";
 
-function App() {
+function Home() {
   type Coctail = {
     strDrink: string;
     strDrinkThumb: string;
@@ -74,4 +73,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
