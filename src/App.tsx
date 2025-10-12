@@ -2,7 +2,13 @@ import { useState, useEffect, act } from "react";
 import "./App.css";
 
 function App() {
-  const [coctails, setCoctails] = useState<string[]>([]);
+  type Coctail = {
+    strDrink: string;
+    strDrinkThumb: string;
+    idDrink: string;
+  };
+
+  const [coctails, setCoctails] = useState<Coctail[]>([]);
   const [alcoholic, setAlcoholic] = useState<boolean>(true);
 
   useEffect(() => {
@@ -33,7 +39,7 @@ function App() {
           Our Cocktails
         </h1>
 
-        <div className="flex">
+        <div className="flex gap-5">
           <div className="flex flex-col gap-5">
             <p className="text-base capitalize">choose coctail type:</p>
             <button
@@ -54,7 +60,14 @@ function App() {
             </button>
           </div>
 
-          <div className="grid grid-cols-4"></div>
+          <div className="grid grid-cols-4 place-items-center gap-8 !p-8">
+            {coctails?.map((coctail, index) => (
+              <div key={index} className="flex flex-col gap-3">
+                <img className="rounded" src={coctail.strDrinkThumb} />
+                <p> {coctail.strDrink} </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </>
