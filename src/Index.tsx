@@ -1,4 +1,5 @@
-import { useState, useEffect, act } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router";
 
 function Home() {
   type Coctail = {
@@ -61,10 +62,12 @@ function Home() {
 
           <div className="grid grid-cols-4 place-items-center gap-8 !p-8">
             {coctails?.map((coctail, index) => (
-              <div key={index} className="flex flex-col gap-3">
-                <img className="rounded" src={coctail.strDrinkThumb} />
-                <p> {coctail.strDrink} </p>
-              </div>
+              <Link to={`/singleCoctail/${coctail.idDrink}`}>
+                <div key={index} className="flex flex-col gap-3">
+                  <img className="rounded" src={coctail.strDrinkThumb} />
+                  <p> {coctail.strDrink} </p>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
