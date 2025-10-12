@@ -26,7 +26,8 @@ function SingleCoctail() {
           `https://thecocktaildb.com/api/json/v1/1/lookup.php?i=${params.coctailID}`
         );
         const posts = await response.json();
-        console.log(posts);
+        console.log(posts.drinks);
+        setCoctail(posts.drinks);
       } catch (error) {
         console.log(error);
       }

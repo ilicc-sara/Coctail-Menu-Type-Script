@@ -34,12 +34,8 @@ function Home() {
 
   return (
     <>
-      <section className="w-[90%] !mx-auto !mt-5 py-12">
-        <h1 className="text-5xl font-semibold text-center text-pink-700 mb-8">
-          Our Cocktails
-        </h1>
-
-        <div className="flex gap-5">
+      <section className="w-[90%] !mx-auto !mt-5">
+        <div className="flex gap-10">
           <div className="flex flex-col gap-5">
             <p className="text-base capitalize">choose coctail type:</p>
             <button
@@ -60,7 +56,7 @@ function Home() {
             </button>
           </div>
 
-          <div className="grid grid-cols-4 place-items-center gap-8 !p-8">
+          <div className="grid grid-cols-4 items-start justify-center gap-8">
             {coctails?.map((coctail, index) => (
               <Link to={`/singleCoctail/${coctail.idDrink}`}>
                 <div key={index} className="flex flex-col gap-3">
