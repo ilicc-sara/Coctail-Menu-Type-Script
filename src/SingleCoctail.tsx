@@ -35,7 +35,24 @@ function SingleCoctail() {
 
     fetchPost();
   }, []);
-  return <h1>SINGLE COCTAIL</h1>;
+
+  console.log(coctail && coctail);
+  return (
+    <section className="w-[80%] !mx-auto !my-5 grid grid-cols-2 items-start justify-center gap-10">
+      {coctail && (
+        <div>
+          <img className="rounded-xl" src={coctail[0].strDrinkThumb} />
+        </div>
+      )}
+
+      {coctail && (
+        <div className="text-left">
+          <p className="text-3xl font-medium"> {coctail[0].strDrink} </p>
+          <p className="text-xl"> Coctail Type: {coctail[0].strAlcoholic} </p>
+        </div>
+      )}
+    </section>
+  );
 }
 
 export default SingleCoctail;

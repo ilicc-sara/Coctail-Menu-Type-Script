@@ -34,7 +34,7 @@ function Home() {
 
   return (
     <>
-      <section className="w-[90%] !mx-auto !mt-5">
+      <section className="w-[90%] !mx-auto !my-5">
         <div className="flex gap-10">
           <div className="flex flex-col gap-5">
             <p className="text-base capitalize">choose coctail type:</p>
