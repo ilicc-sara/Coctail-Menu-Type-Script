@@ -97,6 +97,12 @@ function SingleCoctail() {
               )}
             </div>
           </div>
+
+          <div className="!mt-6">
+            {coctail[0]?.strInstructions && (
+              <p> {coctail[0]?.strInstructions} </p>
+            )}
+          </div>
         </div>
       )}
     </section>
