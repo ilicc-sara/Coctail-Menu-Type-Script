@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router";
-import Button from "./Button";
+import Button from "./components/Button";
+import CoctailItem from "./components/CoctailItem";
 
 const BASE_URL = "https://thecocktaildb.com/api";
 
@@ -63,12 +63,7 @@ function Home() {
 
           <div className="grid grid-cols-4 items-start justify-center gap-8">
             {coctails?.map((coctail, index) => (
-              <Link to={`/singleCoctail/${coctail.idDrink}`}>
-                <div key={index} className="flex flex-col gap-3">
-                  <img className="rounded" src={coctail.strDrinkThumb} />
-                  <p> {coctail.strDrink} </p>
-                </div>
-              </Link>
+              <CoctailItem coctail={coctail} index={index} />
             ))}
             {loading && <div className="loader"></div>}
           </div>
