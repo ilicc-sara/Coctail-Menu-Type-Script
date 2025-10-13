@@ -10,20 +10,28 @@ function Home() {
 
   const [coctails, setCoctails] = useState<Coctail[]>([]);
   const [alcoholic, setAlcoholic] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
+        setLoading(true);
         const response = await fetch(
           `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${
             alcoholic ? "Alcoholic" : "Non_Alcoholic"
           }`
         );
-        const posts = await response.json();
-        console.log(posts.drinks);
-        setCoctails(posts.drinks);
+        if (response.ok) {
+          const posts = await response.json();
+          console.log(posts.drinks);
+          setCoctails(posts.drinks);
+          setLoading(false);
+        } else {
+          setError(true);
+        }
       } catch (error) {
-        console.log(error);
+        setError(true);
       }
     };
 
@@ -65,8 +73,10 @@ function Home() {
                 </div>
               </Link>
             ))}
+            {loading && <div className="loader"></div>}
           </div>
         </div>
+        {error && <h1>Something went wrong...</h1>}
       </section>
     </>
   );

@@ -19,17 +19,21 @@ function SingleCoctail() {
   };
 
   const [coctail, setCoctail] = useState<SnglCoctail[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
   const params = useParams();
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
+        setLoading(true);
         const response = await fetch(
           `https://thecocktaildb.com/api/json/v1/1/lookup.php?i=${params.coctailID}`
         );
         const posts = await response.json();
         console.log(posts.drinks);
         setCoctail(posts.drinks);
+        setLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -38,7 +42,6 @@ function SingleCoctail() {
     fetchPost();
   }, []);
 
-  console.log(coctail && coctail);
   return (
     <section className="w-[80%] !mx-auto !my-5 grid grid-cols-2 items-start justify-center gap-10">
       {coctail && (
@@ -49,6 +52,7 @@ function SingleCoctail() {
 
       {coctail && (
         <div className="text-left flex flex-col gap-6 !py-3">
+          {loading && <div className="loader"></div>}
           <p className="text-3xl font-medium border-b-4 border-pink-500 !pb-5 inline-block">
             {" "}
             🍸 {coctail[0]?.strDrink}{" "}
