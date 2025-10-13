@@ -1,5 +1,3 @@
-import React from "react";
-
 type SnglCoctail = {
   strIngredient1: string;
   strIngredient2: string;
@@ -11,47 +9,51 @@ type SnglCoctail = {
   strIngredient8?: string;
 };
 
-function Ingredients({ coctail }: SnglCoctail[]) {
+type IngredientsProps = {
+  coctail: SnglCoctail;
+};
+
+function Ingredients({ coctail }: IngredientsProps) {
   return (
     <>
-      {coctail[0]?.strIngredient1 && (
+      {coctail?.strIngredient1 && (
         <div className="rounded-xl border-[2px] border-[#efb8d2] !py-1 text-center !px-1">
-          {coctail[0]?.strIngredient1}
+          {coctail?.strIngredient1}
         </div>
       )}
-      {coctail[0]?.strIngredient2 && (
+      {coctail?.strIngredient2 && (
         <div className="rounded-xl border-[2px] border-[#efb8d2] !py-1 text-center !px-1">
-          {coctail[0]?.strIngredient2}
+          {coctail?.strIngredient2}
         </div>
       )}
-      {coctail[0]?.strIngredient3 && (
+      {coctail?.strIngredient3 && (
         <div className="rounded-xl border-[2px] border-[#efb8d2] !py-1 text-center !px-1">
-          {coctail[0]?.strIngredient3}
+          {coctail?.strIngredient3}
         </div>
       )}
-      {coctail[0]?.strIngredient4 && (
+      {coctail?.strIngredient4 && (
         <div className="rounded-xl border-[2px] border-[#efb8d2] !py-1 text-center !px-1">
-          {coctail[0]?.strIngredient4}
+          {coctail?.strIngredient4}
         </div>
       )}
-      {coctail[0]?.strIngredient5 && (
+      {coctail?.strIngredient5 && (
         <div className="rounded-xl border-[2px] border-[#efb8d2] !py-1 text-center !px-1">
-          {coctail[0]?.strIngredient5}
+          {coctail?.strIngredient5}
         </div>
       )}
-      {coctail[0]?.strIngredient6 && (
+      {coctail?.strIngredient6 && (
         <div className="rounded-xl border-[2px] border-[#efb8d2] !py-1 text-center !px-1">
-          {coctail[0]?.strIngredient6}
+          {coctail?.strIngredient6}
         </div>
       )}
-      {coctail[0]?.strIngredient7 && (
+      {coctail?.strIngredient7 && (
         <div className="rounded-xl border-[2px] border-[#efb8d2] !py-1 text-center !px-1">
-          {coctail[0]?.strIngredient7}
+          {coctail?.strIngredient7}
         </div>
       )}
-      {coctail[0]?.strIngredient8 && (
+      {coctail?.strIngredient8 && (
         <div className="rounded-xl border-[2px] border-[#efb8d2] !py-1 text-center !px-1">
-          {coctail[0]?.strIngredient8}
+          {coctail?.strIngredient8}
         </div>
       )}
     </>

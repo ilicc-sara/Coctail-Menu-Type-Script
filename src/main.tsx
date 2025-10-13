@@ -4,7 +4,7 @@ import "./App.css";
 import "./index.css";
 import SharedLayout from "./layouts/SharedLayout.tsx";
 import Home from "./pages/home/Index.tsx";
-import SingleCoctail from "./pages/SingleCoctail.tsx";
+import SingleCoctail from "./pages/singleCoctail/Index.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -26,6 +26,6 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider router={router} />s
   </StrictMode>
 );

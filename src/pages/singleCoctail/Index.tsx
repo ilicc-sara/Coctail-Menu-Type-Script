@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import Ingredients from "./components/Ingredients";
 
 const BASE_URL = "https://thecocktaildb.com/api";
 
@@ -69,46 +70,7 @@ function SingleCoctail() {
           <div className="flex gap-6 justify-start items-center">
             <p className="text-xl uppercase">Ingredients:</p>
             <div className="grid grid-cols-2 gap-1">
-              {coctail[0]?.strIngredient1 && (
-                <div className="rounded-xl border-[2px] border-[#efb8d2] !py-1 text-center !px-1">
-                  {coctail[0]?.strIngredient1}
-                </div>
-              )}
-              {coctail[0]?.strIngredient2 && (
-                <div className="rounded-xl border-[2px] border-[#efb8d2] !py-1 text-center !px-1">
-                  {coctail[0]?.strIngredient2}
-                </div>
-              )}
-              {coctail[0]?.strIngredient3 && (
-                <div className="rounded-xl border-[2px] border-[#efb8d2] !py-1 text-center !px-1">
-                  {coctail[0]?.strIngredient3}
-                </div>
-              )}
-              {coctail[0]?.strIngredient4 && (
-                <div className="rounded-xl border-[2px] border-[#efb8d2] !py-1 text-center !px-1">
-                  {coctail[0]?.strIngredient4}
-                </div>
-              )}
-              {coctail[0]?.strIngredient5 && (
-                <div className="rounded-xl border-[2px] border-[#efb8d2] !py-1 text-center !px-1">
-                  {coctail[0]?.strIngredient5}
-                </div>
-              )}
-              {coctail[0]?.strIngredient6 && (
-                <div className="rounded-xl border-[2px] border-[#efb8d2] !py-1 text-center !px-1">
-                  {coctail[0]?.strIngredient6}
-                </div>
-              )}
-              {coctail[0]?.strIngredient7 && (
-                <div className="rounded-xl border-[2px] border-[#efb8d2] !py-1 text-center !px-1">
-                  {coctail[0]?.strIngredient7}
-                </div>
-              )}
-              {coctail[0]?.strIngredient8 && (
-                <div className="rounded-xl border-[2px] border-[#efb8d2] !py-1 text-center !px-1">
-                  {coctail[0]?.strIngredient8}
-                </div>
-              )}
+              {coctail && <Ingredients coctail={coctail[0]} />}
             </div>
           </div>
 
