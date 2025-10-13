@@ -7,7 +7,7 @@ function Nav() {
         Our Cocktails
       </h1>
       <Link to="/">
-        <span className="absolute right-5 top-2 uppercase text-xl font-medium">
+        <span className="absolute right-5 top-2 uppercase text-xl font-medium !text-pink-500">
           home
         </span>
       </Link>

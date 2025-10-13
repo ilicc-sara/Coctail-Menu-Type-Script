@@ -48,8 +48,11 @@ function SingleCoctail() {
       )}
 
       {coctail && (
-        <div className="text-left flex flex-col gap-6">
-          <p className="text-3xl font-medium"> {coctail[0]?.strDrink} </p>
+        <div className="text-left flex flex-col gap-6 !py-3">
+          <p className="text-3xl font-medium border-b-4 border-pink-500 !pb-5 inline-block">
+            {" "}
+            🍸 {coctail[0]?.strDrink}{" "}
+          </p>
           <p className="text-xl"> Coctail Type: {coctail[0]?.strAlcoholic} </p>
 
           <div className="flex gap-6 justify-start items-center">
@@ -100,7 +103,7 @@ function SingleCoctail() {
 
           <div className="!mt-6">
             {coctail[0]?.strInstructions && (
-              <p> {coctail[0]?.strInstructions} </p>
+              <p className="capitalize"> {coctail[0]?.strInstructions} </p>
             )}
           </div>
         </div>
