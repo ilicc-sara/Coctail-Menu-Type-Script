@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 
+const BASE_URL = "https://thecocktaildb.com/api";
+
 function Home() {
   type Coctail = {
     strDrink: string;
@@ -18,7 +20,7 @@ function Home() {
       try {
         setLoading(true);
         const response = await fetch(
-          `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${
+          `${BASE_URL}/json/v1/1/filter.php?a=${
             alcoholic ? "Alcoholic" : "Non_Alcoholic"
           }`
         );

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
+const BASE_URL = "https://thecocktaildb.com/api";
+
 function SingleCoctail() {
   type SnglCoctail = {
     idDrink: string;
@@ -20,6 +22,7 @@ function SingleCoctail() {
 
   const [coctail, setCoctail] = useState<SnglCoctail[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
 
   const params = useParams();
 
@@ -28,14 +31,18 @@ function SingleCoctail() {
       try {
         setLoading(true);
         const response = await fetch(
-          `https://thecocktaildb.com/api/json/v1/1/lookup.php?i=${params.coctailID}`
+          `${BASE_URL}/json/v1/1/lookup.php?i=${params.coctailID}`
         );
-        const posts = await response.json();
-        console.log(posts.drinks);
-        setCoctail(posts.drinks);
-        setLoading(false);
+        if (response.ok) {
+          const posts = await response.json();
+          console.log(posts.drinks);
+          setCoctail(posts.drinks);
+          setLoading(false);
+        } else {
+          setError(true);
+        }
       } catch (error) {
-        console.log(error);
+        setError(true);
       }
     };
 
@@ -112,6 +119,7 @@ function SingleCoctail() {
           </div>
         </div>
       )}
+      {error && <h1>Something went wrong...</h1>}
     </section>
   );
 }

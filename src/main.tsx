@@ -1,8 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import Home from "./Index.tsx";
-import SingleCoctail from "./SingleCoctail.tsx";
+import Home from "./pages/Index.tsx";
+import SingleCoctail from "./pages/SingleCoctail.tsx";
 import SharedLayout from "./layouts/SharedLayout.tsx";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
