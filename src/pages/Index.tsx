@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
+import Button from "./Button";
 
 const BASE_URL = "https://thecocktaildb.com/api";
 
@@ -40,30 +41,24 @@ function Home() {
     fetchPost();
   }, [alcoholic]);
 
-  const active: string = "shadow-[0_0_0_3px_#230312,_0_0_0_6px_#efb8d2]";
-
   return (
     <>
       <section className="w-[90%] !mx-auto !my-5">
         <div className="flex gap-10">
           <div className="flex flex-col gap-5">
             <p className="text-base capitalize">choose coctail type:</p>
-            <button
-              onClick={() => setAlcoholic(true)}
-              className={`${
-                alcoholic ? active : ""
-              } rounded-xl border-[2px] border-[#efb8d2] !py-2 text-lg w-48 transition-all duration-300 ease-in-out hover:!bg-[#efb8d2] hover:!text-[#230312]`}
+            <Button
+              alcoholic={alcoholic}
+              handleClick={() => setAlcoholic(true)}
             >
               alcoholic
-            </button>
-            <button
-              onClick={() => setAlcoholic(false)}
-              className={`${
-                !alcoholic ? active : ""
-              } rounded-xl border-[2px] border-[#efb8d2] !py-2 text-lg w-48 transition-all duration-300 ease-in-out hover:!bg-[#efb8d2] hover:!text-[#230312]`}
+            </Button>
+            <Button
+              alcoholic={!alcoholic}
+              handleClick={() => setAlcoholic(false)}
             >
               non-alcoholic
-            </button>
+            </Button>
           </div>
 
           <div className="grid grid-cols-4 items-start justify-center gap-8">
