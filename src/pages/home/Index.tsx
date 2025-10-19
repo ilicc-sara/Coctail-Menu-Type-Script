@@ -27,7 +27,6 @@ function Home() {
         );
         if (response.ok) {
           const posts = await response.json();
-          console.log(posts.drinks);
           setCoctails(posts.drinks);
           setLoading(false);
         } else {

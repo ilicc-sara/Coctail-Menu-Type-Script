@@ -36,7 +36,6 @@ function SingleCoctail() {
         );
         if (response.ok) {
           const posts = await response.json();
-          console.log(posts.drinks);
           setCoctail(posts.drinks);
           setLoading(false);
         } else {
