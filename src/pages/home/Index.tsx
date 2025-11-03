@@ -16,6 +16,9 @@ function Home() {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
 
+  const [searchValue, setSearchValue] = useState<string>("");
+  console.log(searchValue);
+
   useEffect(() => {
     const fetchPost = async () => {
       try {
@@ -58,6 +61,12 @@ function Home() {
             >
               non-alcoholic
             </Button>
+            <input
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+              className="!bg-[#fff] placeholder:text-[#000] !text-[#000]"
+              placeholder="Search..."
+            />
           </div>
 
           <div className="grid grid-cols-4 items-start justify-center gap-8">
