@@ -12,12 +12,12 @@ function Home() {
   };
 
   const [coctails, setCoctails] = useState<Coctail[]>([]);
+  const [activeCoctails, setActiveCoctails] = useState<Coctail[]>([]);
   const [alcoholic, setAlcoholic] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
 
   const [searchValue, setSearchValue] = useState<string>("");
-  console.log(searchValue);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -30,6 +30,7 @@ function Home() {
         );
         if (response.ok) {
           const posts = await response.json();
+          setActiveCoctails(posts.drinks);
           setCoctails(posts.drinks);
           setLoading(false);
         } else {
@@ -42,6 +43,8 @@ function Home() {
 
     fetchPost();
   }, [alcoholic]);
+
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -64,7 +67,7 @@ function Home() {
             <input
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
-              className="!bg-[#fff] placeholder:text-[#000] !text-[#000]"
+              className="!bg-[#fff] placeholder:text-[#000] !text-[#000] rounded !pl-2 w-48"
               placeholder="Search..."
             />
           </div>
