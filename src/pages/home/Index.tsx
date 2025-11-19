@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Button from "./components/Button";
 import CoctailItem from "./components/CoctailItem";
 
@@ -12,12 +12,13 @@ function Home() {
   };
 
   const [coctails, setCoctails] = useState<Coctail[]>([]);
-  const [activeCoctails, setActiveCoctails] = useState<Coctail[]>([]);
+
   const [alcoholic, setAlcoholic] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
 
   const [searchValue, setSearchValue] = useState<string>("");
+  console.log(searchValue);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -30,7 +31,6 @@ function Home() {
         );
         if (response.ok) {
           const posts = await response.json();
-          setActiveCoctails(posts.drinks);
           setCoctails(posts.drinks);
           setLoading(false);
         } else {
@@ -44,7 +44,11 @@ function Home() {
     fetchPost();
   }, [alcoholic]);
 
-  useEffect(() => {}, []);
+  const filteredCoctails = useMemo(() => {
+    return coctails.filter((item) =>
+      item.strDrink.toLowerCase().includes(searchValue.toLowerCase())
+    );
+  }, [coctails, searchValue]);
 
   return (
     <>
@@ -73,9 +77,10 @@ function Home() {
           </div>
 
           <div className="grid grid-cols-4 items-start justify-center gap-8">
-            {coctails?.map((coctail, index) => (
-              <CoctailItem coctail={coctail} index={index} />
-            ))}
+            {coctails &&
+              filteredCoctails.map((coctail, index) => (
+                <CoctailItem coctail={coctail} index={index} />
+              ))}
             {loading && <div className="loader"></div>}
           </div>
         </div>
