@@ -50,36 +50,52 @@ function SingleCoctail() {
   }, []);
 
   return (
-    <section className="w-[80%] !mx-auto !my-5 grid grid-cols-2 items-start justify-center gap-10">
+    <section className="w-[80%] !mx-auto !my-5 grid grid-cols-2 items-start gap-14">
+      {/* IMAGE SIDE */}
       {coctail && (
-        <div>
-          <img className="rounded-xl" src={coctail[0]?.strDrinkThumb} />
+        <div className="sticky top-10 flex justify-center">
+          <div className="rounded-2xl overflow-hidden shadow-[0_0_25px_rgba(255,255,255,0.15)] border border-[#2d354d] hover:scale-[1.02] transition duration-300">
+            <img
+              src={coctail[0]?.strDrinkThumb}
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
       )}
 
       {coctail && (
-        <div className="text-left flex flex-col gap-6 !py-3">
+        <div className="text-left flex flex-col gap-10 !py-3">
           {loading && <div className="loader"></div>}
-          <p className="text-3xl font-medium border-b-4 border-pink-500 !pb-5 inline-block">
-            {" "}
-            🍸 {coctail[0]?.strDrink}{" "}
-          </p>
-          <p className="text-xl"> Coctail Type: {coctail[0]?.strAlcoholic} </p>
 
-          <div className="flex gap-6 justify-start items-center">
-            <p className="text-xl uppercase">Ingredients:</p>
-            <div className="grid grid-cols-2 gap-1">
+          <p className="text-4xl font-bold border-b-4 border-pink-500 !pb-4 inline-block tracking-wide drop-shadow">
+            🍸 {coctail[0]?.strDrink}
+          </p>
+
+          <p className="text-xl opacity-90 bg-[#1c243b] p-3 rounded-xl shadow-md border border-[#2c3550]">
+            <span className="font-semibold">Coctail Type:</span>{" "}
+            {coctail[0]?.strAlcoholic}
+          </p>
+
+          <div>
+            <p className="text-xl uppercase font-bold tracking-wide !mb-3 border-l-4 border-pink-500 pl-3">
+              Ingredients
+            </p>
+
+            <div className="grid grid-cols-2 gap-3 bg-[#141b2b] p-5 rounded-xl shadow-inner border border-[#262f45]">
               {coctail && <Ingredients coctail={coctail[0]} />}
             </div>
           </div>
 
-          <div className="!mt-6">
+          <div className="bg-[#101726] p-6 rounded-xl shadow-xl border border-[#1d2639] hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition duration-300">
             {coctail[0]?.strInstructions && (
-              <p className="capitalize"> {coctail[0]?.strInstructions} </p>
+              <p className="capitalize text-[18px] leading-relaxed opacity-95">
+                {coctail[0]?.strInstructions}
+              </p>
             )}
           </div>
         </div>
       )}
+
       {error && <h1>Something went wrong...</h1>}
     </section>
   );
