@@ -12,13 +12,10 @@ function Home() {
   };
 
   const [coctails, setCoctails] = useState<Coctail[]>([]);
-
   const [alcoholic, setAlcoholic] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
-
   const [searchValue, setSearchValue] = useState<string>("");
-  console.log(searchValue);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -51,42 +48,55 @@ function Home() {
   }, [coctails, searchValue]);
 
   return (
-    <>
-      <section className="w-[90%] !mx-auto !my-5">
-        <div className="flex gap-10">
-          <div className="flex flex-col gap-5">
-            <p className="text-base capitalize">choose coctail type:</p>
-            <Button
-              alcoholic={alcoholic}
-              handleClick={() => setAlcoholic(true)}
-            >
-              alcoholic
-            </Button>
-            <Button
-              alcoholic={!alcoholic}
-              handleClick={() => setAlcoholic(false)}
-            >
-              non-alcoholic
-            </Button>
-            <input
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-              className="!bg-[#fff] placeholder:text-[#000] !text-[#000] rounded !pl-2 w-48"
-              placeholder="Search..."
-            />
-          </div>
+    <section className="w-[90%] mx-auto my-5">
+      <div className="flex flex-col lg:flex-row gap-10">
+        {/* LEFT SIDE */}
+        <div className="flex flex-col gap-5 w-full lg:w-1/4">
+          <p className="text-base capitalize">choose cocktail type:</p>
 
-          <div className="grid grid-cols-4 items-start justify-center gap-8">
-            {coctails &&
-              filteredCoctails.map((coctail, index) => (
-                <CoctailItem coctail={coctail} index={index} />
-              ))}
-            {loading && <div className="loader"></div>}
-          </div>
+          <Button alcoholic={alcoholic} handleClick={() => setAlcoholic(true)}>
+            alcoholic
+          </Button>
+
+          <Button
+            alcoholic={!alcoholic}
+            handleClick={() => setAlcoholic(false)}
+          >
+            non-alcoholic
+          </Button>
+
+          <input
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+            className="bg-white text-black placeholder-black rounded pl-2 py-2 w-full"
+            placeholder="Search..."
+          />
         </div>
-        {error && <h1>Something went wrong...</h1>}
-      </section>
-    </>
+
+        {/* GRID */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 w-full">
+          {filteredCoctails.map((coctail, index) => (
+            <CoctailItem
+              coctail={coctail}
+              index={index}
+              key={coctail.idDrink}
+            />
+          ))}
+
+          {loading && (
+            <div className="col-span-full flex justify-center">
+              <div className="loader"></div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {error && (
+        <h1 className="text-red-600 text-center mt-6">
+          Something went wrong...
+        </h1>
+      )}
+    </section>
   );
 }
 
